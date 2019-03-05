@@ -5,6 +5,7 @@ resource "aws_iam_policy" "cwl_logs" {
 
   policy = <<EOF
 {
+"Version": "2012-10-17",
       "Statement":[
         {
           "Effect":"Allow",
