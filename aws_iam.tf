@@ -40,7 +40,6 @@ EOF
 
 resource "aws_iam_role_policy_attachment" "cwl_log_role_attachement" {
   depends_on = ["aws_iam_policy.cwl_logs"]
-  name       = "cwl_log_role_attachement"
   role       = "${aws_iam_role.cwl_logs.name}"
   policy_arn = "${aws_iam_policy.cwl_logs.arn}"
 }
