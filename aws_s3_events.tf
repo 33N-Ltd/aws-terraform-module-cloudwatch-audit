@@ -33,7 +33,7 @@ resource "aws_cloudwatch_event_rule" "s3_policy_change_rule" {
       "PutBucketRequestPayment",
       "PutBucketTagging",
       "PutBucketVersioning",
-      "PutBucketWebsite",
+      "PutBucketWebsite"
     ]
   }
 }
