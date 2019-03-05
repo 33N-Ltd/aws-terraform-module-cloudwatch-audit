@@ -41,7 +41,7 @@ PATTERN
 }
 
 resource "aws_cloudwatch_event_target" "sns" {
-  arn = "${var.sns_infrastructure_arn}"
+  arn = "${aws_sns_topic.sns_topic.arn}"
   rule = "${aws_cloudwatch_event_rule.s3_policy_change_rule.name}"
   target_id = "SendToSNS"
 }

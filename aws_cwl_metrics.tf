@@ -19,7 +19,7 @@ resource "aws_cloudwatch_metric_alarm" "SecurityGroupChangesAlarm" {
   period = 300
   threshold = 1
   statistic = "Sum"
-  alarm_actions = ["${var.sns_infrastructure_arn}"]
+  alarm_actions = ["${aws_sns_topic.sns_topic.arn}"]
 }
 
 resource "aws_cloudwatch_log_metric_filter" "NetworkAclChangesMetricFilter" {
@@ -43,7 +43,7 @@ resource "aws_cloudwatch_metric_alarm" "NetworkAclChangesAlarm" {
   period = 300
   threshold = 1
   statistic = "Sum"
-  alarm_actions = ["${var.sns_infrastructure_arn}"]
+  alarm_actions = ["${aws_sns_topic.sns_topic.arn}"]
 }
 
 resource "aws_cloudwatch_log_metric_filter" "GatewayChangesMetricFilter" {
@@ -67,7 +67,7 @@ resource "aws_cloudwatch_metric_alarm" "GatewayChangesAlarm" {
   period = 300
   threshold = 1
   statistic = "Sum"
-  alarm_actions = ["${var.sns_infrastructure_arn}"]
+  alarm_actions = ["${aws_sns_topic.sns_topic.arn}"]
 }
 
 resource "aws_cloudwatch_log_metric_filter" "VpcChangesMetricFilter" {
@@ -91,7 +91,7 @@ resource "aws_cloudwatch_metric_alarm" "VpcChangesAlarm" {
   period = 300
   threshold = 1
   statistic = "Sum"
-  alarm_actions = ["${var.sns_infrastructure_arn}"]
+  alarm_actions = ["${aws_sns_topic.sns_topic.arn}"]
 }
 
 resource "aws_cloudwatch_log_metric_filter" "EC2InstanceChangesMetricFilter" {
@@ -115,7 +115,7 @@ resource "aws_cloudwatch_metric_alarm" "EC2InstanceChangesAlarm" {
   period = 300
   threshold = 1
   statistic = "Sum"
-  alarm_actions = ["${var.sns_infrastructure_arn}"]
+  alarm_actions = ["${aws_sns_topic.sns_topic.arn}"]
 }
 
 resource "aws_cloudwatch_log_metric_filter" "EC2LargeInstanceChangesMetricFilter" {
@@ -139,7 +139,7 @@ resource "aws_cloudwatch_metric_alarm" "EC2LargeInstanceChangesAlarm" {
   period = 300
   threshold = 1
   statistic = "Sum"
-  alarm_actions = ["${var.sns_infrastructure_arn}"]
+  alarm_actions = ["${aws_sns_topic.sns_topic.arn}"]
 }
 
 resource "aws_cloudwatch_log_metric_filter" "CloudTrailChangesMetricFilter" {
@@ -163,7 +163,7 @@ resource "aws_cloudwatch_metric_alarm" "CloudTrailChangesAlarm" {
   period = 300
   threshold = 1
   statistic = "Sum"
-  alarm_actions = ["${var.sns_infrastructure_arn}"]
+  alarm_actions = ["${aws_sns_topic.sns_topic.arn}"]
 }
 
 resource "aws_cloudwatch_log_metric_filter" "ConsoleSignInFailuresChangesMetricFilter" {
@@ -187,7 +187,7 @@ resource "aws_cloudwatch_metric_alarm" "ConsoleSignInFailuresAlarm" {
   period = 300
   threshold = 3
   statistic = "Sum"
-  alarm_actions = ["${var.sns_infrastructure_arn}"]
+  alarm_actions = ["${aws_sns_topic.sns_topic.arn}"]
 }
 
 resource "aws_cloudwatch_log_metric_filter" "AuthorizationFailuresChangesMetricFilter" {
@@ -211,7 +211,7 @@ resource "aws_cloudwatch_metric_alarm" "AuthorizationFailuresAlarm" {
   period = 300
   threshold = 1
   statistic = "Sum"
-  alarm_actions = ["${var.sns_infrastructure_arn}"]
+  alarm_actions = ["${aws_sns_topic.sns_topic.arn}"]
 }
 
 resource "aws_cloudwatch_log_metric_filter" "IAMPolicyChangesMetricFilter" {
@@ -235,5 +235,5 @@ resource "aws_cloudwatch_metric_alarm" "IAMPolicyChangesAlarm" {
   period = 300
   threshold = 1
   statistic = "Sum"
-  alarm_actions = ["${var.sns_infrastructure_arn}"]
+  alarm_actions = ["${aws_sns_topic.sns_topic.arn}"]
 }
