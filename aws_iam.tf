@@ -1,4 +1,5 @@
 resource "aws_iam_policy" "cwl_logs" {
+  depends_on = ["aws_cloudwatch_log_group.cwl_log_group"]
   name        = "${var.cloudwatch_log_group_name}-policy"
   description = "Policy for adding cloudwatch logs"
 
@@ -15,6 +16,7 @@ resource "aws_iam_policy" "cwl_logs" {
             "${aws_cloudwatch_log_group.cwl_log_group.arn}"
           ]
         }
+      ]
 }
 EOF
 }
@@ -38,6 +40,7 @@ EOF
 
 resource "aws_iam_role_policy_attachment" "cwl_log_role_attachement" {
   depends_on = ["aws_iam_policy.cwl_logs"]
+  name       = "cwl_log_role_attachement"
   role       = "${aws_iam_role.cwl_logs.name}"
   policy_arn = "${aws_iam_policy.cwl_logs.arn}"
 }
