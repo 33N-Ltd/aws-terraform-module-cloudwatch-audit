@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_event_rule" "s3_policy_change_rule" {
-  name        = "${var.s3_policy_change_rule_name}"
+  name        = var.s3_policy_change_rule_name
   description = "Captures changes to S3 buckets"
 
   event_pattern = <<PATTERN
@@ -38,10 +38,12 @@ resource "aws_cloudwatch_event_rule" "s3_policy_change_rule" {
   }
 }
 PATTERN
+
 }
 
 resource "aws_cloudwatch_event_target" "sns" {
-  arn       = "${aws_sns_topic.sns_topic.arn}"
-  rule      = "${aws_cloudwatch_event_rule.s3_policy_change_rule.name}"
+  arn       = aws_sns_topic.sns_topic.arn
+  rule      = aws_cloudwatch_event_rule.s3_policy_change_rule.name
   target_id = "SendToSNS"
 }
+
